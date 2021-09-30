@@ -1,26 +1,32 @@
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import * as React from 'react';
+import { queryByTestId, render } from '@testing-library/react';
 import { ConditionalWrapper } from "..";
 
+const wrapperFunction = (children: JSX.Element | JSX.Element[]) => <div data-testid="wrapper">{children}</div>;
+const childComponent = <p data-testid="child">Child</p>;
+
 test('renders wrapper when condition is true', () => {
-	const { container } = render(
+	render(
 		<ConditionalWrapper
 			condition={true}
-			wrapper={(children) => <div className="wrapper">{children}</div>}><p className="child">Child</p>
+			wrapper={wrapperFunction}>
+				{childComponent}
 		</ConditionalWrapper>
 	);
 
-	expect(container.className).toBe('wrapper');
+	expect(queryByTestId(document.documentElement, 'wrapper')).toBeInTheDocument;
+	expect(queryByTestId(document.documentElement, 'child')).toBeInTheDocument;
 });
 
 test('doesn\'t render wrapper when condition is false', () => {
-	const { container } = render(
+	render(
 		<ConditionalWrapper
 			condition={false}
-			wrapper={(children) => <div className={'wrapper'}>{children}</div>}><p>Child</p>
+			wrapper={wrapperFunction}>
+				{childComponent}
 		</ConditionalWrapper>
 	);
 
-	expect(container.className).toBe('child');
+	expect(queryByTestId(document.documentElement, 'wrapper')).not.toBeInTheDocument;
+	expect(queryByTestId(document.documentElement, 'child')).toBeInTheDocument;
 });
