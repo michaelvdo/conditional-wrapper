@@ -1,6 +1,6 @@
 {
   "name": "conditional-wrapper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A React component with which you can conditionally wrap child components",
   "main": "build/index.js",
   "module": "build/index.es.js",
