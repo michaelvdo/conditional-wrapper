@@ -22,6 +22,10 @@
     "HoC"
   ],
   "author": "Michael van den Oudenalder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelvdo/truly-responsive-menu"
+  },
   "license": "ISC",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^20.0.0",
