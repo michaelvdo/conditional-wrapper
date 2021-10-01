@@ -6,7 +6,9 @@ Occasionally, you may want to wrap a React component with another component, but
 This component does only one thing: Conditionally wrap a child component with a wrapping component, based on a condition that's passed as a prop.
 
 ## Installation
-`npm i conditional-wrapper`
+```
+npm i conditional-wrapper
+```
 
 ## Usage
 ```
